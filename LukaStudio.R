@@ -344,8 +344,6 @@ if (is_empty(welcsvcs)==FALSE){
   print("Filtering data...(this might take a while)")
   registerDoParallel(numCores)
   foreach (welcsvc = welcsvcs) %dopar% {
-    csv1<-read.csv("H191024Z_1_CGCATGAT-TCAGGCTT.MDLVC.vcf.txt.mdlvccall.csv.mdltrans.csv.mdltrim.csv.mdtrim.csv")
-    
     csv1 <- read.csv(welcsvc, header = TRUE)
     if(nrow(csv1)>1){
       csv1 <- mutate(csv1, VAFtoCVAF=Allelic_Frequency/control_VAF)
